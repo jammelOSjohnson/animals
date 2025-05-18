@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AnimalShow from "./AnimalShow";
 
 //generates a random animal and returns the animal array
 function getRandomAnimal() {
@@ -16,11 +17,16 @@ const App = () => {
     setAnimals([...animals, getRandomAnimal()]);
   };
 
+  //render the array of animals
+  const renderAnimals = animals.map((animal, index) => {
+    return <AnimalShow type={animal} key={index} />;
+  });
+
   //render the results
   return (
     <div>
       <button onClick={handleClick}>Add Animal</button>
-      <div>{animals}</div>
+      <div>{renderAnimals}</div>
     </div>
   );
 };
